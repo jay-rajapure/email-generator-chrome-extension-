@@ -13,14 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/email")
-@AllArgsConstructor
 public class EmailGeneratorController {
     @Autowired
     EmailGeneratorService emailGeneratorService;
     @PostMapping("/generate")
     public ResponseEntity<String> generateEmail(@RequestBody EmailRequest emailRequest) throws JsonProcessingException {
        String response= emailGeneratorService.generateEmailReply(emailRequest);
-
+        System.out.println("request is being hit");
         return  ResponseEntity.ok(response);
     }
 

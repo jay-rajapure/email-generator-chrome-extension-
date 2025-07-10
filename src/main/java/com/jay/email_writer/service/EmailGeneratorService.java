@@ -52,7 +52,6 @@ public class EmailGeneratorService {
         return jsonResponse.path("candidates")
                 .get(0)
                 .path("content")
-                .get(0)
                 .path("parts")
                 .get(0)
                 .path("text").asText();
@@ -64,7 +63,7 @@ public class EmailGeneratorService {
         prompt.append("Generate  a Professional email reply for the following email content . Please Dont Generate Subject Line");
         if(emailRequest.getTone()!= null && emailRequest.getTone().isEmpty())
         {
-            prompt.append("Use a ").append(emailRequest.getTone()).append("tone.");
+            prompt.append("Use a ").append(emailRequest.getTone()).append("tone");
         }
         prompt.append("\n Orignal Email \n ").append(emailRequest.getEmailContent());
         return  prompt.toString();
